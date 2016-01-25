@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'spring'
+gem "paperclip", "~> 4.3"
+
 
 group :development, :test do
   gem 'sqlite3'
