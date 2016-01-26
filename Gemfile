@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'spring'
 gem "paperclip", "~> 4.3"
-
+gem 'devise'
 
 group :development, :test do
   gem 'sqlite3'

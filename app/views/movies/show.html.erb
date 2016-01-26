@@ -1,34 +1,38 @@
-<%= image_tag @movie.cover.url %>
+<div class="col-lg-4">
+  <%= image_tag @movie.cover.url, style: "width: 100%" %><br/><br/>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+  <%= link_to 'Back to movies list', movies_path %>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
+<div class="col-lg-8">
+    <h1>
+      <%= @movie.title %>
+    </h1>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
-<p>
-  <strong>Actors:</strong>
-  <%= @movie.actors %>
-</p>
-<p>
-  <strong>Genre:</strong>
-  <%= @movie.genre %>
-</p>
-<p>
-  <strong>Runtime:</strong>
-  <%= @movie.runtime %>
-</p>
-<p>
-  <strong>Budget:</strong>
-  <%= @movie.budget %>
-</p>
+    <blockquote>
+        <p>
+          <%= @movie.description %>
+        </p>
+    </blockquote>
 
-<%= link_to 'Back to movies list', movies_path %>
+    <h4>
+      <strong>Director:</strong>
+      <%= @movie.director %>
+    </h4>
+    <h4>
+      <strong>Actors:</strong>
+      <%= @movie.actors %>
+    </h4>
+    <h4>
+      <strong>Genre:</strong>
+      <%= @movie.genre %>
+    </h4>
+    <h4>
+      <strong>Runtime:</strong>
+      <%= @movie.runtime %>
+    </h4>
+    <h4>
+      <strong>Budget:</strong>
+      <%= @movie.budget %>
+    </h4>
+</div>
