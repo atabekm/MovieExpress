@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126001716) do
+ActiveRecord::Schema.define(version: 20160126120903) do
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20160126001716) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
   end
+
+  create_table "reviews", force: true do |t|
+    t.text     "body"
+    t.integer  "star"
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

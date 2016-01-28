@@ -2,6 +2,9 @@
   <%= image_tag @movie.cover.url, style: "width: 100%" %><br/><br/>
 
   <%= link_to 'Back to movies list', movies_path %>
+  <% if user_signed_in? %>
+    | <%= link_to 'Edit', edit_movie_path(@movie)  %>
+  <% end %>
 </div>
 
 <div class="col-lg-8">
@@ -35,4 +38,59 @@
       <strong>Budget:</strong>
       <%= @movie.budget %>
     </h4>
+  <br/>
+
+
+  <div class="well bs-component" style="padding-left: 30px; padding-right: 30px;">
+    <fieldset>
+      <legend>Reviews (<%= @movie.reviews.length%>)</legend>
+      <% if @movie.reviews.length > 0 %>
+          <% @movie.reviews.each do |review| %>
+              <p>
+                <span class="text-warning">
+                  <strong><%= review.user.email %></strong> / <%= review.created %><br/>
+                </span>
+                <span class="text-info">
+                    <% if review.star != nil %>
+                        <% (1..review.star).each do |s| %>&#9733;<% end %>
+                    <% end %>
+                </span>
+                <span class="text-muted">
+                  <%= review.body %>
+                </span>
+              </p>
+          <% end %>
+      <% else %>
+          <p>No reviews have been posted yet. Be the first one to do.</p>
+      <% end %>
+    </fieldset>
+  </div>
+
+  <div class="well bs-component" style="padding-left: 30px; padding-right: 30px;">
+      <% if user_signed_in? %>
+      <%= form_for([@movie, @movie.reviews.build], html: { class: "form-horizontal" }) do |f| %>
+          <fieldset>
+            <legend>Add a review:
+            <%= f.select(:star, options_for_select([['&#9733;&#9733;&#9733;&#9733;&#9733;'.html_safe, 5],
+                                                         ['&#9733;&#9733;&#9733;&#9733;'.html_safe, 4],
+                                                         ['&#9733;&#9733;&#9733;'.html_safe, 3],
+                                                         ['&#9733;&#9733;'.html_safe, 2],
+                                                         ['&#9733;'.html_safe, 1],
+                                                        ], 3)) %>
+            </legend>
+            <div class="form-group">
+              <%= f.text_area :body, class: "form-control" %>
+            </div>
+
+            <%= f.hidden_field(:user_id, value: current_user.id) %>
+
+            <div class="form-group">
+              <%= f.submit "Add review", class: "btn btn-danger" %>
+            </div>
+          </fieldset>
+      <% end %>
+    <% else %>
+      <%= link_to 'Login', signin_path %> to add reviews.
+    <% end %>
+  </div>
 </div>
