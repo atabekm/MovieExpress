@@ -2,7 +2,18 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def show
+    total = 0
+    @movie.reviews.each do |r|
+      total += r.star
+    end
 
+    if @movie.reviews.count > 0
+      @total = total.to_f / @movie.reviews.count
+    else
+      @total = 0
+    end
+
+    @total
   end
 
   def index

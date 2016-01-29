@@ -38,8 +38,14 @@
       <strong>Budget:</strong>
       <%= @movie.budget %>
     </h4>
-  <br/>
+  <h4>
+    <% if @total > 0 %>
+        <strong>Average user rating: </strong>
+        <%= @total.round(1) %> out of 5
+    <% end %>
+  </h4>
 
+  <br/>
 
   <div class="well bs-component" style="padding-left: 30px; padding-right: 30px;">
     <fieldset>
