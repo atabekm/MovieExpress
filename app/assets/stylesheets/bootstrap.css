@@ -16,9 +16,12 @@ html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    position: relative;
+    min-height: 100%;
 }
 body {
     margin: 0;
+    margin-bottom: 60px;
 }
 article,
 aside,
@@ -7043,4 +7046,21 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading {
     background-color: #464545;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #464545;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.container .text-muted {
+    margin: 20px 0;
 }
