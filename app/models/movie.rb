@@ -16,4 +16,10 @@ class Movie < ActiveRecord::Base
   def tags_list
     self.tags.map(&:name)
   end
+
+  def self.search(query)
+    if query
+      where('title LIKE ?', "%#{query}%")
+    end
+  end
 end

@@ -10,39 +10,39 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav navbar-right">
-
-            <li>
-              <%= link_to('Movies', movies_path)  %>
-            </li>
-            <li>
-              <%= link_to('Genres', genres_path)  %>
-            </li>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-              <li>
-                <%= link_to('Add movie', new_movie_path)  %>
-              </li>
-              <li>
-                <%= link_to(current_user.email, '')  %>
-              </li>
-              <li>
-                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-              </li>
-          <% else %>
-              <li>
-                <%= link_to('Register', signup_path)  %>
-              </li>
-              <li>
-                <%= link_to('Login', signin_path)  %>
-              </li>
+        <li>
+          <%= link_to('Movies', movies_path) %>
+        </li>
+        <li>
+          <%= link_to('Genres', genres_path) %>
+        </li>
+        <li>
+          <%= form_tag search_path, method: 'get', class: "navbar-form navbar-right" do %>
+              <div class="form-group">
+                <%= text_field_tag :search, nil, class: "form-control", placeholder: "Search" %>
+              </div>
+              <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
           <% end %>
+        </li>
+        <% if user_signed_in? %>
+            <li>
+              <%= link_to('Add movie', new_movie_path) %>
+            </li>
+            <li>
+              <%= link_to(current_user.email, '') %>
+            </li>
+            <li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </li>
+        <% else %>
+            <li>
+              <%= link_to('Register', signup_path) %>
+            </li>
+            <li>
+              <%= link_to('Login', signin_path) %>
+            </li>
+        <% end %>
       </ul>
-
     </div>
   </div>
 </div>

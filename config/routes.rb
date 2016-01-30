@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  #resources :tags, as: :genre
   get "genres/:genre", to: 'tags#show', as: :genre
   get "genres", to: 'tags#index', as: :genres
+
+  get "search", to: "movies#search", as: :search
 end

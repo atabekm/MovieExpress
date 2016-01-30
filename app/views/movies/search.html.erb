@@ -1,0 +1,7 @@
+<h1>Movies found with query '<%= @query %>'</h1>
+
+<% if @movies.count > 0 %>
+    <%= render @movies %>
+<% else %>
+    Unfortunately, no movies found with your query.
+<% end %>

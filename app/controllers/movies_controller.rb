@@ -52,6 +52,11 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def search
+    @query = params[:search]
+    @movies = Movie.search(@query)
+  end
+
   private
   def set_movie
     @movie = Movie.find(params[:id])
