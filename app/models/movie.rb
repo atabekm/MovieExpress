@@ -3,4 +3,17 @@ class Movie < ActiveRecord::Base
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
   has_many :reviews
+  has_many :taggings
+  has_many :tags, through: :taggings
+
+
+  def tags_list=(names)
+    self.tags = names.split(",").map do |name|
+      Tag.where(name: name.strip.downcase).first_or_create!
+    end
+  end
+
+  def tags_list
+    self.tags.map(&:name)
+  end
 end

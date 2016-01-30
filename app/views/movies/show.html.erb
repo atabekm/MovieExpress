@@ -27,8 +27,8 @@
       <%= @movie.actors %>
     </h4>
     <h4>
-      <strong>Genre:</strong>
-      <%= @movie.genre %>
+        <strong>Genre:</strong>
+        <%=raw @movie.tags_list.map{ |t| link_to t.capitalize, genre_path(t) }.join(", ") %>
     </h4>
     <h4>
       <strong>Runtime:</strong>

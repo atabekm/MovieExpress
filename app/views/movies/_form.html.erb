@@ -42,9 +42,10 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :genre, class: "col-lg-2 control-label" %>
+      <%= f.label :tags_list, "Genre", class: "col-lg-2 control-label" %>
       <div class="col-lg-10">
-        <%= f.text_field :genre, class: "form-control" %>
+        <%= f.text_field :tags_list, value: @movie.tags_list.map(&:capitalize).join(", "), class: "form-control",
+                         placeholder: "Genres separated with comma" %>
       </div>
     </div>
 

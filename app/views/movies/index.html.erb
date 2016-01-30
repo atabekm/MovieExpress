@@ -1,5 +1,3 @@
 <h1>Movies listing</h1>
 
-<% @movies.each do |movie| %>
-    <a href="<%= movie_path(movie) %>"><%= image_tag movie.cover.url(:thumb), style: "margin: 20px; " %></a>
-<% end %>
+<%= render @movies %>
