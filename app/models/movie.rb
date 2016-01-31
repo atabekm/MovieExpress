@@ -6,6 +6,9 @@ class Movie < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
 
+  def to_s
+    title
+  end
 
   def tags_list=(names)
     self.tags = names.split(",").map do |name|
