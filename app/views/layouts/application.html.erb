@@ -14,10 +14,10 @@
   <div class="row">
 
     <% if notice  %>
-        <div class="alert alert-dismissible alert-warning"><%= notice %></div>
+        <div class="alert alert-dismissible alert-warning" id="notice"><%= notice %></div>
     <% end %>
     <% if alert %>
-        <div class="alert alert-dismissible alert-danger"><%= alert %></div>
+        <div class="alert alert-dismissible alert-danger" id="alert"><%= alert %></div>
     <% end %>
 
     <%= yield %>
@@ -26,6 +26,21 @@
 </div>
 
 <%= render "layouts/footer" %>
+
+<script>
+    $("div#notice")
+        .delay(3000)
+        .queue(function(next){
+            $(this).remove();
+            next();
+        });
+    $("div#alert")
+        .delay(3000)
+        .queue(function(next){
+            $(this).remove();
+            next();
+        });
+</script>
 
 </body>
 </html>
